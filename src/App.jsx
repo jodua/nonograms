@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage';
+import About from './components/About/About';
 import "./styles/App.scss";
 
 import {
@@ -15,6 +16,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );
