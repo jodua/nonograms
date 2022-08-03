@@ -1,0 +1,27 @@
+{
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "nonograms": "Nonograms",
+        "language": "Language"
+    },
+    "homepage": {
+        "title": "NONOGRAMS",
+        "subtitle": "Play nonograms for free",
+        "button": "Play"
+    },
+    "about": {
+        "title": "About nonograms",
+        "content": {
+            "title": "What are nonograms?",
+            "text": "Nonograms are a puzzle game that can be played by anyone. The game is played on a grid of squares, each of which can be either a 1 or a 0. The game is won when all of the squares in the grid are filled in and all of the rows and columns contain the same number of 1s and 0s.",
+            "author": {
+                "title": "Author",
+                "content": "This game was created by "
+            }
+        }
+    },
+    "buttons": {
+        "homepage": "Back to homepage"
+    }
+}

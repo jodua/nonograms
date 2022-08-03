@@ -1,22 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import i18n from "i18next";
+import i18next from "i18next";
+import Backend from 'i18next-http-backend';
 import { initReactI18next } from "react-i18next";
 import "./styles/index.scss";
+import languages from './config/languages';
 
-i18n
+const language = languages.find(value => value === localStorage.getItem('language'));
+
+i18next.use(Backend)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: {
-        translation: {
-          "hello": "Hello",
-        }
-      },
+    lng: language || 'en',
+    fallbackLng: 'en',
+    ns: ['main'],
+    defaultNS: 'main',
+    react: {
+      wait: true,
+      useSuspense: false
     },
-    fallbackLng: "en",
-  });
+    interpolation: {
+      escapeValue: false
+    },
+    backend: {
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
+    }
+  })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

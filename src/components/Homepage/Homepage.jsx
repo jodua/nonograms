@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom'
 import "../../styles/Homepage/Homepage.scss"
+import { useTranslation } from 'react-i18next';
 
 const Homepage = () => {
+
+    const { t } = useTranslation();
 
     return (
         <div className="homepageContainer">
             <div className="homepageCenter">
                 <div className="homepageCenterTitle">
-                    NONOGRAMS
+                    {t('homepage.title')}
                 </div>
                 <div className="homepageCenterSubtitle">
-                    Play nonograms for free
+                    {t('homepage.subtitle')}
                 </div>
                 <div className="homepageCenterButtonContainer">
                     <Link to="/nonograms">
                         <button className="homepageCenterButton">
-                            PLAY
+                            {t('homepage.button')}
                         </button>
                     </Link>
                 </div>

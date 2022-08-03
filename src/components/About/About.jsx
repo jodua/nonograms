@@ -1,25 +1,30 @@
 import { Link } from 'react-router-dom'
 import "../../styles/About/About.scss"
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+
+    const { t } = useTranslation();
+
     return (
         <div className="aboutContainer">
             <div className="aboutCenter">
                 <div className="aboutCenterTitle">
-                    About nonograms
+                    {t('about.title')}
                 </div>
                 <div className="aboutCenterSection">
                     <div className="aboutCenterSectionTitle">
-                        What are nonograms?
+                        {t('about.content.title')}
                     </div>
                     <div className="aboutCenterSectionText">
-                        Nonograms are a puzzle game that is used to test your ability to solve a problem.
+                        {t('about.content.text')}
                     </div>
                     <div className="aboutCenterSectionTitle">
-                        Author
+                        {t('about.content.author.title')}
                     </div>
                     <div className="aboutCenterSectionText">
-                        This game was created by <a href="
+                        {t('about.content.author.content')}
+                        <a href="
                         https://github.com/jodua
                         ">Wojciech Pietruszewski</a>
                     </div>
@@ -28,7 +33,7 @@ const About = () => {
                 <div className="aboutCenterButtonContainer">
                     <Link to="/">
                         <button className="homepageButton">
-                            Back to homepage
+                            {t('buttons.homepage')}
                         </button>
                     </Link>
                 </div>

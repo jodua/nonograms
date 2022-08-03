@@ -30,7 +30,9 @@
         .navbarRightItem {
             margin-left: 20px;
 
-            a {
+            a,
+            span {
+                cursor: pointer;
                 text-decoration: none;
                 color: var(--color-tertiary);
                 font-size: 1.2rem;

@@ -1,0 +1,27 @@
+{
+    "navbar": {
+        "home": "Strona domowa",
+        "about": "O nonogramach",
+        "nonograms": "Nonogramy",
+        "language": "Język"
+    },
+    "homepage": {
+        "title": "NONOGRAMY",
+        "subtitle": "Graj w nonogramy za darmo",
+        "button": "Zagraj"
+    },
+    "about": {
+        "title": "O nonogramach",
+        "content": {
+            "title": "Czym są nonogramy?",
+            "text": "Nonogramy to gra logiczna, w którą może grać każdy. Gra jest rozgrywana na siatce kwadratów, z których każdy może być albo 1 lub 0. Aby wygrać, trzeba wypełnić wszystkie pola zgodnie z podpowiedziami.",
+            "author": {
+                "title": "Autor",
+                "content": "Autorem gry jest "
+            }
+        }
+    },
+    "buttons": {
+        "homepage": "Powrót do strony głównej"
+    }
+}
