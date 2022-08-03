@@ -4,7 +4,8 @@ import "../../styles/Game/GameCanvas.scss"
 const GameCanvas = forwardRef(({ nonogram }, ref) => {
 
     useImperativeHandle(ref, () => ({
-        checkWin: () => checkWin(canvasRef.current, nonogram)
+        checkWin: () => checkWin(canvasRef.current, nonogram),
+        showErrors: () => showErrors(canvasRef.current, nonogram)
     }));
 
     const canvasRef = useRef(null);
@@ -141,7 +142,6 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
         const halfSize = size / 2;
         for (let i = halfSize; i >= 0; i--) {
             setTimeout(() => {
-                console.log(size, halfSize, i, halfSize - i)
                 context.fillRect(
                     coordinates.x + i,
                     coordinates.y + i,
@@ -162,6 +162,24 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
             }
         }
         return true;
+    }
+
+    const showErrors = (canvas, nonogram) => {
+        for (let i = 0; i < nonogram.fields.length; i++) {
+            for (let j = 0; j < nonogram.fields[i].length; j++) {
+                if (nonogram.fields[i][j] !== 1 && isColored(canvas, { x: j, y: i })) {
+                    const squareCoordinates = getSquareCoordinates({ x: j, y: i });
+                    const ctx = canvas.getContext('2d');
+                    ctx.strokeStyle = '#FF0000';
+                    ctx.strokeRect(
+                        squareCoordinates.x + 4,
+                        squareCoordinates.y + 4,
+                        400 / nonogram.width - 4,
+                        400 / nonogram.height - 4
+                    );
+                }
+            }
+        }
     }
 
     useEffect(() => {

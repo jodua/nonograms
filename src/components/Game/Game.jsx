@@ -37,6 +37,10 @@ const Game = () => {
         setOpenModal(true);
     }
 
+    const handleShowErrors = () => {
+        gameCanvas.current.showErrors();
+    }
+
     return (
         <div className="gameContainer">
             <div className="gameCenter">
@@ -69,9 +73,11 @@ const Game = () => {
                         </div>
                     </div>
                     <div className="gameBottombarRight">
-                        <div className="gameBottombarItem">
-                            something
-                        </div>
+                        <button className="gameShowErrorsButton"
+                            onClick={() => handleShowErrors()}
+                        >
+                            {t("game.errorsShow")}
+                        </button>
                         <div className="gameBottombarItem">
                             something
                         </div>
