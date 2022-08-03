@@ -28,6 +28,73 @@ const GameCanvas = ({ nonogram }) => {
         ctx.stroke();
     }
 
+    const drawClues = (canvas, nonogram, clues) => {
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#000';
+        ctx.font = '20px Arial';
+
+        clues.horizontal.forEach((clue, index) => {
+            clue.forEach((cell, cellIndex) => {
+                if (cell) {
+                    ctx.fillText(cell, 110 + index * 400 / nonogram.width, 22 * (cellIndex + 1));
+                }
+            })
+        }
+        );
+
+        clues.vertical.forEach((clue, index) => {
+            ctx.fillText(clue, 20, 120 + index * 400 / nonogram.height);
+        }
+        );
+    }
+
+    const getClues = (nonogram) => {
+        let clues = {
+            horizontal: [],
+            vertical: []
+        }
+
+        for (const row of nonogram.fields) {
+            let rowClues = [];
+            let clueValue = 0;
+            for (const cell of row) {
+                if (cell === 1) {
+                    clueValue++;
+                }
+                else {
+                    if (clueValue > 0) {
+                        rowClues.push(clueValue);
+                        clueValue = 0;
+                    }
+                }
+            }
+            clueValue !== 0 && rowClues.push(clueValue)
+            clues.vertical.push(rowClues);
+        }
+
+        const transposed = nonogram.fields[0].map((_, colIndex) => nonogram.fields.map(row => row[colIndex]));
+
+        for (const row of transposed) {
+            let rowClues = [];
+            let clueValue = 0;
+            for (const cell of row) {
+                if (cell === 1) {
+                    clueValue++;
+                }
+                else {
+                    if (clueValue > 0) {
+                        rowClues.push(clueValue);
+                        clueValue = 0;
+                    }
+                }
+            }
+            clueValue !== 0 && rowClues.push(clueValue)
+            clues.horizontal.push(rowClues);
+        }
+
+        return clues;
+    }
+
     const getSquareIndex = (event) => {
         const posX = event.clientX - canvasRef.current.offsetLeft - 100;
         const posY = event.clientY - canvasRef.current.offsetTop - 100;
@@ -46,7 +113,7 @@ const GameCanvas = ({ nonogram }) => {
     const isColored = (canvas, squareIndex) => {
         const ctx = canvas.getContext('2d')
         const squareCoordinates = getSquareCoordinates(squareIndex);
-        const pixel = ctx.getImageData(squareCoordinates.x, squareCoordinates.y, 1, 1).data;
+        const pixel = ctx.getImageData(squareCoordinates.x + 1, squareCoordinates.y + 1, 1, 1).data;
         return pixel[0] === 0 && pixel[1] === 0 && pixel[2] === 0 && pixel[3] === 255;
     }
 
@@ -65,6 +132,7 @@ const GameCanvas = ({ nonogram }) => {
     useEffect(() => {
         drawBackground(canvasRef.current);
         drawGrid(canvasRef.current, nonogram.width, nonogram.height);
+        drawClues(canvasRef.current, nonogram, getClues(nonogram));
     }, [nonogram])
 
 
