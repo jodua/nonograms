@@ -122,11 +122,19 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
         return pixel[0] === 0 && pixel[1] === 0 && pixel[2] === 0 && pixel[3] === 255;
     }
 
+    const isMarked = (canvas, squareIndex) => {
+        const ctx = canvas.getContext('2d')
+        const squareCoordinates = getSquareCoordinates(squareIndex);
+        const pixel = ctx.getImageData(squareCoordinates.x + 5, squareCoordinates.y + 5, 1, 1).data;
+        return pixel[0] === 0 && pixel[1] === 0 && pixel[2] === 0 && pixel[3] === 255;
+    }
+
     const colorSquare = (event, canvas) => {
         const squareIndex = getSquareIndex(event);
         const squareCoordinates = getSquareCoordinates(squareIndex);
         if (squareIndex.x >= 0 && squareIndex.y >= 0) {
             const ctx = canvas.getContext('2d');
+            ctx.lineWidth = 1;
             const color = isColored(canvas, squareIndex) ? '#FFF' : '#000';
             fillFromCenter(ctx, squareCoordinates, 400 / nonogram.height, color);
             setTimeout(() => {
@@ -134,6 +142,24 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
                 ctx.strokeRect(squareCoordinates.x, squareCoordinates.y, 400 / nonogram.width, 400 / nonogram.height);
             }, 400 / nonogram.height / 2 * 3);
 
+        }
+    }
+
+    const markEmptySquare = (event, canvas, nonogram) => {
+        event.preventDefault();
+        const squareIndex = getSquareIndex(event);
+        const squareCoordinates = getSquareCoordinates(squareIndex);
+        const squareSize = 400 / nonogram.width;
+        if (squareIndex.x >= 0 && squareIndex.y >= 0 && !isColored(canvas, squareIndex)) {
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = isMarked(canvas, squareIndex) ? '#FFF' : '#000';
+            ctx.lineWidth = isMarked(canvas, squareIndex) ? 5 : 2;
+            ctx.beginPath();
+            ctx.moveTo(squareCoordinates.x + 5, squareCoordinates.y + 5);
+            ctx.lineTo(squareCoordinates.x + squareSize - 5, squareCoordinates.y + squareSize - 5);
+            ctx.moveTo(squareCoordinates.x + squareSize - 5, squareCoordinates.y + 5);
+            ctx.lineTo(squareCoordinates.x + 5, squareCoordinates.y + squareSize - 5);
+            ctx.stroke();
         }
     }
 
@@ -194,6 +220,7 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
             <canvas
                 ref={canvasRef}
                 onClick={(e) => colorSquare(e, canvasRef.current)}
+                onContextMenu={(e) => markEmptySquare(e, canvasRef.current, nonogram)}
                 className="gameCanvas"
                 width="500"
                 height="500">
