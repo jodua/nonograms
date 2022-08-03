@@ -15,8 +15,8 @@ const Modal = ({ modalTitle, modalContent, modalButtonMsg, closeHandler }) => {
 
 
     return (
-        <div className="modalBackdrop">
-            <div className={"modalContainer" + (isClosing ? " modalClosing" : "")}>
+        <div className={"modalBackdrop" + (isClosing ? " modalClosing" : "")}>
+            <div className="modalContainer">
                 <div className="modalTitle">{modalTitle}</div>
                 <div className="modalContent">{modalContent}</div>
                 <button className="modalButton" onClick={() => closeModalWithAnimation()}>
