@@ -126,10 +126,30 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
         const squareCoordinates = getSquareCoordinates(squareIndex);
         if (squareIndex.x >= 0 && squareIndex.y >= 0) {
             const ctx = canvas.getContext('2d');
-            ctx.fillStyle = isColored(canvas, squareIndex) ? '#FFF' : '#000';
-            ctx.fillRect(squareCoordinates.x, squareCoordinates.y, 400 / nonogram.width, 400 / nonogram.height);
-            ctx.strokeStyle = '#000';
-            ctx.strokeRect(squareCoordinates.x, squareCoordinates.y, 400 / nonogram.width, 400 / nonogram.height);
+            const color = isColored(canvas, squareIndex) ? '#FFF' : '#000';
+            fillFromCenter(ctx, squareCoordinates, 400 / nonogram.height, color);
+            setTimeout(() => {
+                ctx.strokeStyle = '#000';
+                ctx.strokeRect(squareCoordinates.x, squareCoordinates.y, 400 / nonogram.width, 400 / nonogram.height);
+            }, 400 / nonogram.height / 2 * 3);
+
+        }
+    }
+
+    const fillFromCenter = (context, coordinates, size, color) => {
+        context.fillStyle = color;
+        const halfSize = size / 2;
+        for (let i = halfSize; i >= 0; i--) {
+            setTimeout(() => {
+                console.log(size, halfSize, i, halfSize - i)
+                context.fillRect(
+                    coordinates.x + i,
+                    coordinates.y + i,
+                    (halfSize - i) * 2,
+                    (halfSize - i) * 2
+                );
+            }, (halfSize - i) * 4);
+
         }
     }
 
