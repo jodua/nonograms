@@ -96,9 +96,6 @@
             }
 
             .gameBottombarRight {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
 
                 .gameBottombarItem {
                     margin-left: 10px;
@@ -109,6 +106,26 @@
                 }
 
                 .gameShowErrorsButton {
+                    cursor: pointer;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    border: none;
+                    background-color: var(--color-secondary);
+                    color: var(--color-tertiary);
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    transition: background-color 0.5s ease-in-out;
+                    transition: color 0.3s ease-in-out;
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+                    &:hover {
+                        background-color: var(--color-tertiary);
+                        color: hsl(0, 100%, 30%)
+                    }
+                }
+
+                .gameRestartButton {
+                    margin-left: 10px;
                     cursor: pointer;
                     padding: 10px 20px;
                     border-radius: 5px;

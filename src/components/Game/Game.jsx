@@ -42,6 +42,10 @@ const Game = () => {
         gameCanvas.current.showErrors();
     }
 
+    const handleGameRestart = () => {
+        gameCanvas.current.gameRestart();
+    }
+
     return (
         <div className="gameContainer">
             <div className="gameCenter">
@@ -79,9 +83,11 @@ const Game = () => {
                         >
                             {t("game.errorsShow")}
                         </button>
-                        <div className="gameBottombarItem">
-                            something
-                        </div>
+                        <button className="gameRestartButton"
+                            onClick={() => handleGameRestart()}
+                        >
+                            {t("game.restart")}
+                        </button>
                     </div>
                 </div>
             </div>

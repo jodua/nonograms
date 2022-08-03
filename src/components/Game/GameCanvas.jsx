@@ -5,7 +5,8 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
 
     useImperativeHandle(ref, () => ({
         checkWin: () => checkWin(canvasRef.current, nonogram),
-        showErrors: () => showErrors(canvasRef.current, nonogram)
+        showErrors: () => showErrors(canvasRef.current, nonogram),
+        gameRestart: () => gameRestart(canvasRef.current, nonogram)
     }));
 
     const canvasRef = useRef(null);
@@ -19,6 +20,7 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
     const drawGrid = (canvas, nonogramWidth, nonogramHeight) => {
         const ctx = canvas.getContext('2d');
         ctx.strokeStyle = '#000';
+        ctx.beginPath();
 
         for (let i = 100; i < canvas.width; i += 400 / nonogramWidth) {
             ctx.moveTo(i, 0);
@@ -206,6 +208,12 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
                 }
             }
         }
+    }
+
+    const gameRestart = (canvas, nonogram) => {
+        drawBackground(canvas);
+        drawGrid(canvas, nonogram.width, nonogram.height);
+        drawClues(canvasRef.current, nonogram, getClues(nonogram));
     }
 
     useEffect(() => {
