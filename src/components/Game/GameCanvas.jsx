@@ -1,7 +1,11 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import "../../styles/Game/GameCanvas.scss"
 
-const GameCanvas = ({ nonogram }) => {
+const GameCanvas = forwardRef(({ nonogram }, ref) => {
+
+    useImperativeHandle(ref, () => ({
+        checkWin: () => checkWin(canvasRef.current, nonogram)
+    }));
 
     const canvasRef = useRef(null);
 
@@ -129,6 +133,17 @@ const GameCanvas = ({ nonogram }) => {
         }
     }
 
+    const checkWin = (canvas, nonogram) => {
+        for (let i = 0; i < nonogram.fields.length; i++) {
+            for (let j = 0; j < nonogram.fields[i].length; j++) {
+                if (nonogram.fields[i][j] === 1 && !isColored(canvas, { x: j, y: i })) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     useEffect(() => {
         drawBackground(canvasRef.current);
         drawGrid(canvasRef.current, nonogram.width, nonogram.height);
@@ -147,6 +162,6 @@ const GameCanvas = ({ nonogram }) => {
             </canvas>
         </div>
     )
-}
+})
 
 export default GameCanvas
