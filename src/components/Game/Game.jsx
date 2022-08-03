@@ -1,8 +1,12 @@
 import "../../styles/Game/Game.scss"
 import GameCanvas from "./GameCanvas"
 import nonogram from "../../nonogram-mock"
+import { useStopwatch } from "react-timer-hook"
 
 const Game = () => {
+
+    const { minutes, seconds } = useStopwatch({ autoStart: true });
+
     return (
         <div className="gameContainer">
             <div className="gameCenter">
@@ -14,7 +18,7 @@ const Game = () => {
                     </div>
                     <div className="gameTopbarRight">
                         <div className="gameTopbarItem">
-                            00:00
+                            {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
                         </div>
                         <div className="gameTopbarItem">
                             settings
