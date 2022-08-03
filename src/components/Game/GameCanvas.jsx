@@ -156,7 +156,7 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
     const checkWin = (canvas, nonogram) => {
         for (let i = 0; i < nonogram.fields.length; i++) {
             for (let j = 0; j < nonogram.fields[i].length; j++) {
-                if (nonogram.fields[i][j] === 1 && !isColored(canvas, { x: j, y: i })) {
+                if (Boolean(nonogram.fields[i][j]) !== isColored(canvas, { x: j, y: i })) {
                     return false;
                 }
             }
