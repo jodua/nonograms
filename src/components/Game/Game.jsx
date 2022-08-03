@@ -8,7 +8,7 @@ import Modal from "../Modal/Modal"
 
 const Game = () => {
 
-    const { minutes, seconds } = useStopwatch({ autoStart: true });
+    const { minutes, seconds, pause } = useStopwatch({ autoStart: true });
 
     const { t } = useTranslation();
 
@@ -25,8 +25,9 @@ const Game = () => {
 
     const handleWinCheck = () => {
         if (gameCanvas.current.checkWin()) {
+            pause();
             setModalTitle(t("game.win"));
-            setModalContent(t("game.winMessage"));
+            setModalContent(t("game.winMessage") + " " + t("game.time") + " " + minutes + ":" + seconds);
             setModalButtonMsg(t("game.winButton"));
         }
         else {
