@@ -8,7 +8,7 @@ import Modal from "../Modal/Modal"
 
 const Game = () => {
 
-    const { minutes, seconds, pause } = useStopwatch({ autoStart: true });
+    const { minutes, seconds, pause, reset } = useStopwatch({ autoStart: true });
 
     const { t } = useTranslation();
 
@@ -44,6 +44,7 @@ const Game = () => {
 
     const handleGameRestart = () => {
         gameCanvas.current.gameRestart();
+        reset();
     }
 
     return (
