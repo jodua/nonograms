@@ -23,6 +23,7 @@
         }
     },
     "game": {
+        "level": "Poziom",
         "loading": "Ładowanie...",
         "check": "Sprawdź rozwiązanie",
         "errorsShow": "Pokaż błędy",

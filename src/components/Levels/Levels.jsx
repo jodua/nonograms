@@ -1,7 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import "../../styles/Levels/Levels.scss";
-import Level from './Level';
 import levels from "../../nonogram-mock"
+
+import Level from './Level';
+
+import "../../styles/Levels/Levels.scss";
+import "../../styles/common/Structure.scss";
 
 
 const Levels = () => {
@@ -9,12 +12,12 @@ const Levels = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="levelsContainer">
-            <div className="levelsCenter">
-                <div className="levelsCenterTitle">
+        <div className="mainContainer">
+            <div className="centeredContainer container--half">
+                <div className="title">
                     <h1>{t('levels.title')}</h1>
                 </div>
-                <div className="levelsCenterSubtitle">
+                <div className="subtitle">
                     <h2>{t('levels.subtitle')}</h2>
                 </div>
                 <div className="levelsCenterList">

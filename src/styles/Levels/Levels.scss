@@ -1,46 +1,6 @@
-.levelsContainer {
+.levelsCenterList {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
-    background-color: var(--color-primary);
-
-    .levelsCenter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 30%;
-        background-color: var(--color-primary);
-
-        .levelsCenterTitle {
-            h1 {
-                font-size: 2.5rem;
-                color: var(--color-tertiary);
-                font-weight: bold;
-                margin: 0;
-            }
-        }
-
-        .levelsCenterSubtitle {
-            h2 {
-                font-size: 1.5rem;
-                color: var(--color-tertiary);
-                font-weight: bold;
-                margin: 0;
-            }
-        }
-
-        .levelsCenterList {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background-color: var(--color-primary);
-            padding: 0;
-        }
-    }
+    width: 50%;
 }

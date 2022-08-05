@@ -1,41 +1,57 @@
-.navbarContainer {
+.navbar {
     position: fixed;
-    width: 100%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 100%;
     height: 60px;
+
     background-color: var(--color-secondary);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 
-    .navbarLeft {
-        display: flex;
-        align-items: center;
-        margin-left: 20px;
+    user-select: none;
 
-        .navbarLeftLogo {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-    }
-
-    .navbarRight {
+    .navbarSection {
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
         margin-right: 20px;
 
-        .navbarRightItem {
-            margin-left: 20px;
+        .navbarItem {
+            font-size: 1.2rem;
+            margin: 0 10px;
+        }
 
-            a,
-            span {
-                cursor: pointer;
+        .navbarItem-link {
+            a {
                 text-decoration: none;
                 color: var(--color-tertiary);
-                font-size: 1.2rem;
-                font-weight: bold;
-                transition: color 0.2s ease-in-out;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: var(--color-additional);
+                }
+            }
+        }
+
+        .navbarItem--large {
+            font-size: 1.5rem;
+            font-weight: bold;
+
+            a {
+                color: var(--color-additional);
+            }
+        }
+
+        .languageIcon {
+            cursor: pointer;
+
+            svg {
+                color: var(--color-tertiary);
+                transition: color 0.2s;
 
                 &:hover {
                     color: var(--color-additional);
@@ -43,4 +59,5 @@
             }
         }
     }
+
 }

@@ -1,6 +1,10 @@
-import "../../styles/Levels/Level.scss";
 import { useTranslation } from "react-i18next";
+
 import { Link } from "react-router-dom";
+
+import "../../styles/Levels/Level.scss";
+import "../../styles/common/Button.scss";
+import "../../styles/common/Structure.scss";
 
 
 const Level = ({ levelName, nonogram }) => {
@@ -30,11 +34,11 @@ const Level = ({ levelName, nonogram }) => {
                     <h2>{getNonogramCols(nonogram)}</h2>
                 </div>
             </div>
-            <div className="levelLinkButton">
-                <Link to={`/play/${levelName}`}>
-                    <button>{t('levels.play')}</button>
-                </Link>
-            </div>
+            <Link to={`/play/${levelName}`} className="levelLink">
+                <button className="button button--secondary button--large">
+                    {t('levels.play')}
+                </button>
+            </Link>
         </div>
     )
 }

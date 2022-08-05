@@ -1,28 +1,31 @@
-import { Link } from 'react-router-dom'
-import "../../styles/About/About.scss"
 import { useTranslation } from 'react-i18next';
+
+import { Link } from 'react-router-dom'
+
+import "../../styles/common/Button.scss"
+import "../../styles/common/Structure.scss"
 
 const About = () => {
 
     const { t } = useTranslation();
 
     return (
-        <div className="aboutContainer">
-            <div className="aboutCenter">
-                <div className="aboutCenterTitle">
+        <div className="mainContainer">
+            <div className="centeredContainer container--half container--spaced">
+                <div className="title title--medium">
                     {t('about.title')}
                 </div>
-                <div className="aboutCenterSection">
-                    <div className="aboutCenterSectionTitle">
+                <div className="section">
+                    <div className="subtitle">
                         {t('about.content.title')}
                     </div>
-                    <div className="aboutCenterSectionText">
+                    <div className="">
                         {t('about.content.text')}
                     </div>
-                    <div className="aboutCenterSectionTitle">
+                    <div className="subtitle">
                         {t('about.content.author.title')}
                     </div>
-                    <div className="aboutCenterSectionText">
+                    <div className="">
                         {t('about.content.author.content')}
                         <a href="
                         https://github.com/jodua
@@ -30,13 +33,11 @@ const About = () => {
                     </div>
 
                 </div>
-                <div className="aboutCenterButtonContainer">
-                    <Link to="/">
-                        <button className="homepageButton">
-                            {t('buttons.homepage')}
-                        </button>
-                    </Link>
-                </div>
+                <Link to="/">
+                    <button className="button">
+                        {t('buttons.homepage')}
+                    </button>
+                </Link>
             </div>
         </div>
     )

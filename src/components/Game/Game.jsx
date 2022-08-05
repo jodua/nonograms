@@ -1,11 +1,16 @@
-import "../../styles/Game/Game.scss"
-import GameCanvas from "./GameCanvas"
 import { useStopwatch } from "react-timer-hook"
 import { useTranslation } from "react-i18next"
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom";
-import Modal from "../Modal/Modal"
 import levels from "../../nonogram-mock";
+
+import { FaClock } from "react-icons/fa";
+import GameCanvas from "./GameCanvas"
+import Modal from "../Modal/Modal"
+
+import "../../styles/Game/Game.scss"
+import "../../styles/common/Structure.scss"
+import "../../styles/common/Button.scss"
 
 const Game = () => {
 
@@ -58,16 +63,19 @@ const Game = () => {
     }
 
     return (
-        <div className="gameContainer">
-            <div className="gameCenter">
-                <div className="gameTopbar">
-                    <div className="gameTopbarLeft">
-                        <div className="gameTopbarItem">
-                            Level 0
+        <div className="mainContainer">
+            <div className="centeredContainer">
+                <div className="gameBar">
+                    <div className="gameBarSection">
+                        <div className="gameBarSectionItem">
+                            {t("game.level")}: {params.id}
                         </div>
                     </div>
-                    <div className="gameTopbarRight">
-                        <div className="gameTopbarItem">
+                    <div className="gameBarSection clockSection">
+                        <div className="gameBarSectionItem">
+                            <FaClock />
+                        </div>
+                        <div className="gameBarSectionItem clock">
                             {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
                         </div>
                     </div>
@@ -83,27 +91,32 @@ const Game = () => {
                             </div>
                     }
                 </div>
-                <div className="gameBottombar">
-                    <div className="gameBottombarLeft">
-                        <div className="gameBottombarItem">
-                            <button className="gameCheckButton"
+                <div className="gameBar ">
+                    <div className="gameBarSection">
+                        <div className="gameBarSectionItem">
+                            <button className="button"
                                 onClick={() => handleWinCheck()}
                             >
                                 {t("game.check")}
                             </button>
                         </div>
                     </div>
-                    <div className="gameBottombarRight">
-                        <button className="gameShowErrorsButton"
-                            onClick={() => handleShowErrors()}
-                        >
-                            {t("game.errorsShow")}
-                        </button>
-                        <button className="gameRestartButton"
-                            onClick={() => handleGameRestart()}
-                        >
-                            {t("game.restart")}
-                        </button>
+                    <div className="gameBarSection">
+                        <div className="gameBarSectionItem">
+
+                            <button className="button"
+                                onClick={() => handleShowErrors()}
+                            >
+                                {t("game.errorsShow")}
+                            </button>
+                        </div>
+                        <div className="gameBarSectionItem">
+                            <button className="button button--red"
+                                onClick={() => handleGameRestart()}
+                            >
+                                {t("game.restart")}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

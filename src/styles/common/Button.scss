@@ -1,0 +1,41 @@
+.button {
+    background-color: var(--color-secondary);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    color: var(--color-tertiary);
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+
+    cursor: pointer;
+
+    transition: background-color 0.5s ease-in-out, color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: var(--color-tertiary);
+        color: var(--color-primary);
+    }
+}
+
+.button--large {
+    font-size: 2rem;
+}
+
+.button--red {
+    background-color: hsl(0, 100%, 13%);
+    color: var(--color-additional);
+}
+
+.button--secondary {
+    background-color: var(--color-primary);
+    color: var(--color-additional);
+
+    &:hover {
+        background-color: var(--color-secondary);
+        color: var(--color-tertiary);
+    }
+}

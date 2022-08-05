@@ -1,4 +1,4 @@
-const level1 = [
+const Beginner = [
     [1, 1, 0, 1, 1],
     [1, 0, 1, 0, 1],
     [1, 0, 0, 1, 1],
@@ -6,9 +6,7 @@ const level1 = [
     [1, 0, 1, 1, 1]
 ]
 
-
-
-const level2 = [
+const Medium = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
     [1, 0, 0, 1, 1, 1, 1, 1, 1, 1],
@@ -21,7 +19,7 @@ const level2 = [
     [1, 1, 1, 1, 1, 1, 0, 1, 1, 1]
 ]
 
-const level3 = [
+const Advanced = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -40,9 +38,9 @@ const level3 = [
 ]
 
 const levels = {
-    "level1": level1,
-    "level2": level2,
-    "level3": level3
+    "Beginner": Beginner,
+    "Medium": Medium,
+    "Advanced": Advanced
 }
 
 

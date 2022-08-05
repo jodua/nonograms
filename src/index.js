@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import i18next from "i18next";
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from "react-i18next";
-import "./styles/index.scss";
 import languages from './config/languages';
+
+import App from './App';
+
+import "./styles/index.scss";
 
 const language = languages.find(value => value === localStorage.getItem('language'));
 
