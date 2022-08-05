@@ -2,7 +2,7 @@ import { useRef, useEffect, forwardRef, useImperativeHandle, useState } from 're
 import Game from '../../game/Game';
 import "../../styles/Game/GameCanvas.scss"
 
-const GameCanvas = forwardRef(({ nonogram }, ref) => {
+const GameCanvas = forwardRef(({ nonogram, settings }, ref) => {
 
     const canvasRef = useRef(null);
 
@@ -12,14 +12,18 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
         gameReset: () => game.reset(),
         gameCheck: () => game.checkSolution(),
         gameErrors: () => game.drawErrors(),
+        updateSettings: () => game.updateSettings(settings)
     }));
 
 
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        setGame(new Game(canvas, nonogram));
-    }, [nonogram])
+        if (game === null) {
+            setGame(new Game(canvas, nonogram, settings));
+        }
+    }, [nonogram, game, settings])
+
 
 
     return (
@@ -28,8 +32,8 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
                 ref={canvasRef}
                 onContextMenu={e => e.preventDefault()}
                 className="gameCanvas"
-                width="600"
-                height="600">
+                width={settings.canvasSize}
+                height={settings.canvasSize}>
             </canvas>
         </div>
     )

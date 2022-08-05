@@ -7,46 +7,58 @@ const DrawType = {
 }
 
 class Game {
-    constructor(canvas, nonogram) {
+    constructor(canvas, nonogram, settings) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
-        this.width = this.canvas.width;
-        this.height = this.canvas.height;
         this.gameState = new GameState(nonogram);
 
-        this.fontSize = 24 - 4 * this.gameState.nonogram.length / 5;
-        this.ctx.font = this.fontSize + "px Arial";
-        let textMeasurement = this.ctx.measureText("00");
-        this.actualFontWidth = textMeasurement.actualBoundingBoxRight - textMeasurement.actualBoundingBoxLeft;
-        this.actualFontHeight = textMeasurement.actualBoundingBoxAscent - textMeasurement.actualBoundingBoxDescent;
-
-        this.cluesSize = 80;
-        this.cluesFactor = (this.width - this.cluesSize) / this.gameState.nonogram.length;
+        this.setSettings(settings);
 
         this.drawType = null;
         this.drawn = [];
         this.toAnimate = [];
         this.fillType = null;
 
-        this.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
-        this.canvas.addEventListener("mouseup", this.handleMouseUp.bind(this));
-        this.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
-
         this.fps = 60;
         this.interval = 1000 / this.fps;
         this.lastTime = 0;
         this.running = true;
 
-        this.drawClues();
         this.drawBackground();
+        this.drawClues();
         this.drawGrid();
         this.loop();
+    }
+
+    setSettings(settings) {
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+
+        this.cluesSize = settings ? parseFloat(settings.cluesSize) : 80;
+        this.cluesFactor = (this.width - this.cluesSize) / this.gameState.nonogram.length;
+        this.fontSize = settings ? parseInt(settings.fontSize) : 20;
+        this.ctx.font = this.fontSize + "px Arial";
+        let textMeasurement = this.ctx.measureText("00");
+        this.actualFontWidth = textMeasurement.actualBoundingBoxRight - textMeasurement.actualBoundingBoxLeft;
+        this.actualFontHeight = textMeasurement.actualBoundingBoxAscent - textMeasurement.actualBoundingBoxDescent;
+
+
+        this.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
+        this.canvas.addEventListener("mouseup", this.handleMouseUp.bind(this));
+        this.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
+        this.canvas.addEventListener("mouseleave", this.handleMouseLeave.bind(this));
 
     }
+
+    updateSettings(settings) {
+        this.setSettings(settings);
+        this.reset();
+    }
+
     reset() {
         this.gameState = new GameState(this.gameState.nonogram);
-        this.drawClues();
         this.drawBackground();
+        this.drawClues();
         this.drawGrid();
     }
 
@@ -66,7 +78,7 @@ class Game {
     drawBackground() {
         // Fill background with white
         this.ctx.fillStyle = "white";
-        this.ctx.fillRect(this.cluesSize, this.cluesSize, this.width, this.height);
+        this.ctx.fillRect(0, 0, this.width, this.height);
     }
 
     draw() {
@@ -91,8 +103,6 @@ class Game {
     }
 
     drawClues() {
-        // Draw clues boxes
-        this.drawCluesBoxes();
         // Get the clues from the game state
         const clues = this.gameState.clues;
         // For each row of horizontal clues
@@ -401,6 +411,13 @@ class Game {
         else if (event.button === 2) {
             this.drawType = DrawType.MARK
         }
+    }
+
+    handleMouseLeave(event) {
+        // Reset fillType, drawType and drawn fields
+        this.drawType = null;
+        this.drawn = [];
+        this.fillType = null;
     }
 }
 

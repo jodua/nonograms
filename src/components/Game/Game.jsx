@@ -5,12 +5,14 @@ import { useParams } from "react-router-dom";
 import levels from "../../nonogram-mock";
 
 import { FaClock } from "react-icons/fa";
+import { BsFillGearFill } from "react-icons/bs";
 import GameCanvas from "./GameCanvas"
 import Modal from "../Modal/Modal"
 
 import "../../styles/Game/Game.scss"
 import "../../styles/common/Structure.scss"
 import "../../styles/common/Button.scss"
+import GameSettings from "./GameSettings";
 
 const Game = () => {
 
@@ -25,6 +27,16 @@ const Game = () => {
     const [modalContent, setModalContent] = useState("");
     const [modalButtonMsg, setModalButtonMsg] = useState("");
 
+    const [openSettings, setOpenSettings] = useState(false);
+    const [settings, setSettings] = useState(
+        JSON.parse(localStorage.getItem("settings"))
+        ||
+        {
+            canvasSize: 500,
+            cluesSize: 50,
+            fontSize: 20
+        });
+
     const [nonogram, setNonogram] = useState(null);
 
     const game = useRef(null);
@@ -32,6 +44,12 @@ const Game = () => {
     useEffect(() => {
         setNonogram(levels[params.id]);
     }, [params])
+
+    useEffect(() => {
+        if (game.current) {
+            game.current.updateSettings();
+        }
+    }, [settings])
 
 
     const closeModal = () => {
@@ -62,6 +80,14 @@ const Game = () => {
         reset();
     }
 
+    const handleSettings = () => {
+        setOpenSettings(true);
+    }
+
+    const closeSettings = () => {
+        setOpenSettings(false);
+    }
+
     return (
         <div className="mainContainer">
             <div className="centeredContainer">
@@ -83,7 +109,10 @@ const Game = () => {
                 <div className="gameBoard">
                     {
                         nonogram
-                            ? <GameCanvas nonogram={nonogram} ref={game} />
+                            ? <GameCanvas
+                                nonogram={nonogram}
+                                settings={settings}
+                                ref={game} />
                             : <div className="gameBoardLoading">
                                 <div className="gameBoardLoadingText">
                                     {t("game.loading")}
@@ -93,6 +122,13 @@ const Game = () => {
                 </div>
                 <div className="gameBar ">
                     <div className="gameBarSection">
+                        <div className="gameBarSectionItem">
+                            <button className="button"
+                                onClick={() => handleSettings()}
+                            >
+                                <BsFillGearFill />
+                            </button>
+                        </div>
                         <div className="gameBarSectionItem">
                             <button className="button"
                                 onClick={() => handleWinCheck()}
@@ -126,6 +162,12 @@ const Game = () => {
                     modalContent={modalContent}
                     modalButtonMsg={modalButtonMsg}
                     closeHandler={closeModal} />
+            }
+            {
+                openSettings && <GameSettings
+                    settings={settings}
+                    setSettings={setSettings}
+                    closeHandler={closeSettings} />
             }
         </div>
     )

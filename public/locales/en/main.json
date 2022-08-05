@@ -43,6 +43,15 @@
         "columns": "Columns",
         "play": "Play"
     },
+    "settings": {
+        "title": "Game settings",
+        "canvasSize": "Canvas size",
+        "cluesSize": "Clues size",
+        "fontSize": "Font size",
+        "saveWarning": "Warning: if you change the settings, you will lose the current game!",
+        "saveAndClose": "Save and close",
+        "cancel": "Cancel"
+    },
     "buttons": {
         "homepage": "Back to homepage"
     }

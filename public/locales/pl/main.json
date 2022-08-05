@@ -43,6 +43,15 @@
         "columns": "Kolumny",
         "play": "Zagraj"
     },
+    "settings": {
+        "title": "Ustawienia gry",
+        "canvasSize": "Rozmiar planszy",
+        "cluesSize": "Rozmiar podpowiedzi",
+        "fontSize": "Rozmiar czcionki",
+        "saveWarning": "Uwaga: Zapisanie ustawień spowoduje utratę aktualnej gry",
+        "saveAndClose": "Zapisz i zamknij",
+        "cancel": "Anuluj"
+    },
     "buttons": {
         "homepage": "Powrót do strony głównej"
     }
