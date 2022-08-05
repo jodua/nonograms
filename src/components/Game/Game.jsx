@@ -17,14 +17,14 @@ const Game = () => {
     const [modalContent, setModalContent] = useState("");
     const [modalButtonMsg, setModalButtonMsg] = useState("");
 
-    const gameCanvas = useRef(null);
+    const game = useRef(null);
 
     const closeModal = () => {
         setOpenModal(false);
     }
 
     const handleWinCheck = () => {
-        if (gameCanvas.current.checkWin()) {
+        if (game.current.gameCheck()) {
             pause();
             setModalTitle(t("game.win"));
             setModalContent(t("game.winMessage") + " " + t("game.time") + " " + minutes + ":" + seconds);
@@ -39,11 +39,11 @@ const Game = () => {
     }
 
     const handleShowErrors = () => {
-        gameCanvas.current.showErrors();
+        game.current.gameErrors();
     }
 
     const handleGameRestart = () => {
-        gameCanvas.current.gameRestart();
+        game.current.gameReset();
         reset();
     }
 
@@ -60,13 +60,10 @@ const Game = () => {
                         <div className="gameTopbarItem">
                             {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
                         </div>
-                        <div className="gameTopbarItem">
-                            settings
-                        </div>
                     </div>
                 </div>
                 <div className="gameBoard">
-                    <GameCanvas nonogram={nonogram} ref={gameCanvas} />
+                    <GameCanvas nonogram={nonogram} ref={game} />
                 </div>
                 <div className="gameBottombar">
                     <div className="gameBottombarLeft">
