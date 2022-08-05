@@ -21,6 +21,18 @@
             }
         }
     },
+    "game": {
+        "check": "Sprawdź rozwiązanie",
+        "errorsShow": "Pokaż błędy",
+        "restart": "Restart",
+        "lose": "Niestety przegrałeś",
+        "loseMessage": "Nic straconego, możesz spróbować jeszcze raz",
+        "loseButton": "Spróbuj ponownie",
+        "win": "Wygrana!",
+        "winMessage": "Gratulacje, wygrałeś!",
+        "winButton": "Zagraj ponownie",
+        "time": "Czas ukończenia: "
+    },
     "buttons": {
         "homepage": "Powrót do strony głównej"
     }

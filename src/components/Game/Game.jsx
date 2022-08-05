@@ -27,7 +27,7 @@ const Game = () => {
         if (game.current.gameCheck()) {
             pause();
             setModalTitle(t("game.win"));
-            setModalContent(t("game.winMessage") + " " + t("game.time") + " " + minutes + ":" + seconds);
+            setModalContent(t("game.winMessage") + " " + t("game.time") + " " + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0'));
             setModalButtonMsg(t("game.winButton"));
         }
         else {
