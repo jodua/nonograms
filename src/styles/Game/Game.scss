@@ -61,6 +61,27 @@
             font-size: 1.2rem;
             font-weight: bold;
             text-align: center;
+
+            .gameBoardLoading {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 400px;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+                padding: 10px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-align: center;
+
+                .gameBoardLoadingText {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
         }
 
         .gameBottombar {

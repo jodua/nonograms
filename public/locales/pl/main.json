@@ -1,6 +1,7 @@
 {
     "navbar": {
         "home": "Strona domowa",
+        "levels": "Poziomy",
         "about": "O nonogramach",
         "nonograms": "Nonogramy",
         "language": "Język"
@@ -22,6 +23,7 @@
         }
     },
     "game": {
+        "loading": "Ładowanie...",
         "check": "Sprawdź rozwiązanie",
         "errorsShow": "Pokaż błędy",
         "restart": "Restart",
@@ -32,6 +34,13 @@
         "winMessage": "Gratulacje, wygrałeś!",
         "winButton": "Zagraj ponownie",
         "time": "Czas ukończenia: "
+    },
+    "levels": {
+        "title": "Poziomy",
+        "subtitle": "Wybierz poziom, aby rozpocząć grę",
+        "rows": "Wiersze",
+        "columns": "Kolumny",
+        "play": "Zagraj"
     },
     "buttons": {
         "homepage": "Powrót do strony głównej"

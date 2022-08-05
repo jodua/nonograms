@@ -1,6 +1,7 @@
 {
     "navbar": {
         "home": "Home",
+        "levels": "Levels",
         "about": "About",
         "nonograms": "Nonograms",
         "language": "Language"
@@ -22,6 +23,7 @@
         }
     },
     "game": {
+        "loading": "Loading...",
         "check": "Check solution",
         "errorsShow": "Show errors",
         "restart": "Restart",
@@ -32,6 +34,13 @@
         "winMessage": "Congratulations! You have completed the game!",
         "winButton": "Play again",
         "time": "Completion time: "
+    },
+    "levels": {
+        "title": "Levels",
+        "subtitle": "Choose a level to play",
+        "rows": "Rows",
+        "columns": "Columns",
+        "play": "Play"
     },
     "buttons": {
         "homepage": "Back to homepage"

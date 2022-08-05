@@ -26,6 +26,9 @@ const Navbar = () => {
                     <Link to="/">{t('navbar.home')}</Link>
                 </div>
                 <div className="navbarRightItem">
+                    <Link to="/levels">{t('navbar.levels')}</Link>
+                </div>
+                <div className="navbarRightItem">
                     <Link to="/about">{t('navbar.about')}</Link>
                 </div>
                 <div className="navbarRightItem">

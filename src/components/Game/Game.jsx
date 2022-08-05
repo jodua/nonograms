@@ -1,10 +1,11 @@
 import "../../styles/Game/Game.scss"
 import GameCanvas from "./GameCanvas"
-import nonogram from "../../nonogram-mock"
 import { useStopwatch } from "react-timer-hook"
 import { useTranslation } from "react-i18next"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useParams } from "react-router-dom";
 import Modal from "../Modal/Modal"
+import levels from "../../nonogram-mock";
 
 const Game = () => {
 
@@ -12,12 +13,21 @@ const Game = () => {
 
     const { t } = useTranslation();
 
+    const params = useParams();
+
     const [openModal, setOpenModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState("");
     const [modalButtonMsg, setModalButtonMsg] = useState("");
 
+    const [nonogram, setNonogram] = useState(null);
+
     const game = useRef(null);
+
+    useEffect(() => {
+        setNonogram(levels[params.id]);
+    }, [params])
+
 
     const closeModal = () => {
         setOpenModal(false);
@@ -63,7 +73,15 @@ const Game = () => {
                     </div>
                 </div>
                 <div className="gameBoard">
-                    <GameCanvas nonogram={nonogram} ref={game} />
+                    {
+                        nonogram
+                            ? <GameCanvas nonogram={nonogram} ref={game} />
+                            : <div className="gameBoardLoading">
+                                <div className="gameBoardLoadingText">
+                                    {t("game.loading")}
+                                </div>
+                            </div>
+                    }
                 </div>
                 <div className="gameBottombar">
                     <div className="gameBottombarLeft">

@@ -16,7 +16,7 @@ const Homepage = () => {
                     {t('homepage.subtitle')}
                 </div>
                 <div className="homepageCenterButtonContainer">
-                    <Link to="/nonograms">
+                    <Link to="/levels">
                         <button className="homepageCenterButton">
                             {t('homepage.button')}
                         </button>

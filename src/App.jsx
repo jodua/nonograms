@@ -9,6 +9,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import Levels from './components/Levels/Levels';
 
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact path="/nonograms" element={<Game />} />
+        <Route exact path="/levels" element={<Levels />} />
+        <Route exact path="/play/:id" element={<Game />} />
       </Routes>
     </BrowserRouter>
   );
