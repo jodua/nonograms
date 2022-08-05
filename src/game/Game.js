@@ -270,12 +270,19 @@ class Game {
         for (const row of this.gameState.fields) {
             for (const field of row) {
                 // It field differs from the solution return false
+                // Replace marked fields with empty fields
+                if (field.type === FieldType.MARKED) {
+                    field.type = FieldType.EMPTY;
+                    this.toAnimate.push(field);
+                }
                 if (field.type !== this.gameState.nonogram[field.y][field.x]) {
+                    this.toAnimate = [];
                     return false;
                 }
             }
         }
         // If all fields are correct return true
+        this.updateFields();
         return true;
     }
 
