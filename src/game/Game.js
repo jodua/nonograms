@@ -43,6 +43,12 @@ class Game {
         this.loop();
 
     }
+    reset() {
+        this.gameState = new GameState(this.gameState.nonogram);
+        this.drawClues();
+        this.drawBackground();
+        this.drawGrid();
+    }
 
     loop() {
         const now = Date.now();
@@ -290,22 +296,6 @@ class Game {
                 }
             }
         }
-    }
-
-    reset() {
-        // For every field
-        for (const row of this.gameState.fields) {
-            for (const field of row) {
-                // If it is not empty
-                if (field.type !== FieldType.EMPTY) {
-                    // Clear field
-                    this.clearField(field);
-                    this.toAnimate.push(field);
-                }
-            }
-        }
-        // Update canvas
-        this.updateFields();
     }
 
     handleFill(field) {

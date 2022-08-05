@@ -9,10 +9,12 @@ const GameCanvas = forwardRef(({ nonogram }, ref) => {
     const [game, setGame] = useState(null);
 
     useImperativeHandle(ref, () => ({
-        gameReset: () => setGame(new Game(canvasRef.current, nonogram)),
+        gameReset: () => game.reset(),
         gameCheck: () => game.checkSolution(),
         gameErrors: () => game.drawErrors(),
     }));
+
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
