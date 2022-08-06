@@ -393,14 +393,17 @@ class Game {
         const field = this.getField(event.offsetX, event.offsetY);
         // If field is actual game field
         if (field !== null) {
-            // If fillType is null this means that this is the first field clicked
-            // Set current fillType to field type in order to fill only fields with same type
-            if (this.fillType === null) {
-                this.fillType = field.type;
-            }
-            // If fillType matches field type clicked
-            if (this.fillType === field.type) {
-                this.handleFill(field);
+            // Check if field has been already drawn
+            if (this.drawn.indexOf(field) === -1) {
+                // If fillType is null this means that this is the first field clicked
+                // Set current fillType to field type in order to fill only fields with same type
+                if (this.fillType === null) {
+                    this.fillType = field.type;
+                }
+                // If fillType matches field type clicked
+                if (this.fillType === field.type) {
+                    this.handleFill(field);
+                }
             }
         }
         // Reset fillType, drawType and drawn fields
