@@ -8,11 +8,11 @@ import { FaClock } from "react-icons/fa";
 import { BsFillGearFill } from "react-icons/bs";
 import GameCanvas from "./GameCanvas"
 import Modal from "../Modal/Modal"
+import GameSettings from "./GameSettings";
 
 import "../../styles/Game/Game.scss"
 import "../../styles/common/Structure.scss"
 import "../../styles/common/Button.scss"
-import GameSettings from "./GameSettings";
 
 const Game = () => {
 
@@ -28,14 +28,7 @@ const Game = () => {
     const [modalButtonMsg, setModalButtonMsg] = useState("");
 
     const [openSettings, setOpenSettings] = useState(false);
-    const [settings, setSettings] = useState(
-        JSON.parse(localStorage.getItem("settings"))
-        ||
-        {
-            canvasSize: 500,
-            cluesSize: 50,
-            fontSize: 10
-        });
+    const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings")));
 
     const [nonogram, setNonogram] = useState(null);
 
@@ -47,7 +40,9 @@ const Game = () => {
 
     useEffect(() => {
         if (game.current) {
-            game.current.updateSettings();
+            if (settings) {
+                game.current.updateSettings(settings);
+            }
         }
     }, [settings])
 

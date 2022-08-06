@@ -31,6 +31,7 @@ class Game {
     }
 
     setSettings(settings) {
+        console.log("setSettings", settings);
         this.width = this.canvas.width;
         this.height = this.canvas.height;
 
@@ -51,8 +52,10 @@ class Game {
     }
 
     updateSettings(settings) {
-        this.setSettings(settings);
-        this.reset();
+        if (settings) {
+            this.setSettings(settings);
+            this.reset();
+        }
     }
 
     updateNonogram(nonogram) {
