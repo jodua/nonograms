@@ -16,7 +16,6 @@ const GameCanvas = forwardRef(({ nonogram, settings }, ref) => {
     }));
 
 
-
     useEffect(() => {
         const canvas = canvasRef.current;
         if (game === null) {
@@ -24,7 +23,11 @@ const GameCanvas = forwardRef(({ nonogram, settings }, ref) => {
         }
     }, [nonogram, game, settings])
 
-
+    useEffect(() => {
+        if (game) {
+            game.updateNonogram(nonogram);
+        }
+    }, [nonogram, game])
 
     return (
         <div className="gameCanvasContainer">

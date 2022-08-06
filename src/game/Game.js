@@ -55,6 +55,11 @@ class Game {
         this.reset();
     }
 
+    updateNonogram(nonogram) {
+        this.gameState.nonogram = nonogram;
+        this.updateSettings();
+    }
+
     reset() {
         this.gameState = new GameState(this.gameState.nonogram);
         this.drawBackground();

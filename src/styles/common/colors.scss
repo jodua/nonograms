@@ -1,6 +1,12 @@
+$color-primary: #2C3333;
+$color-secondary: #395B64;
+$color-tertiary: #A5C9CA;
+$color-additional: #E7F6F2;
+
+
 :root {
-    --color-primary: #2C3333;
-    --color-secondary: #395B64;
-    --color-tertiary: #A5C9CA;
-    --color-additional: #E7F6F2;
+    --color-primary: #{$color-primary};
+    --color-secondary: #{$color-secondary};
+    --color-tertiary: #{$color-tertiary};
+    --color-additional: #{$color-additional};
 }

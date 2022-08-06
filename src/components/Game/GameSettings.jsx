@@ -5,8 +5,9 @@ import "../../styles/Modal/Modal.scss"
 import "../../styles/Game/GameSettings.scss"
 import "../../styles/common/Button.scss"
 import "../../styles/common/Structure.scss"
+import GameData from "./GameData";
 
-const GameSettings = ({ settings, setSettings, closeHandler }) => {
+const GameSettings = ({ settings, setSettings, closeHandler, currentLevel, setLevel }) => {
 
     const { t } = useTranslation();
 
@@ -39,9 +40,23 @@ const GameSettings = ({ settings, setSettings, closeHandler }) => {
 
     }
 
+    const handleLevelExport = () => {
+        setDataAction("export");
+    }
+
+    const handleLevelImport = () => {
+        setDataAction("import");
+    }
+
+    const handleDataAction = () => {
+        setDataAction(null);
+    }
+
     const [canvasSize, setCanvasSize] = useState(settings.canvasSize);
     const [cluesSize, setCluesSize] = useState(settings.cluesSize);
     const [fontSize, setFontSize] = useState(settings.fontSize);
+
+    const [dataAction, setDataAction] = useState(null);
 
     const [isClosing, setIsClosing] = useState(false);
 
@@ -91,9 +106,24 @@ const GameSettings = ({ settings, setSettings, closeHandler }) => {
                 <button className="button button--red" onClick={() => handleSaveAndClose()}>
                     {t("settings.saveAndClose")}
                 </button>
+                <button className="button" onClick={() => handleLevelExport()}>
+                    {t("settings.export")}
+                </button>
+                <button className="button" onClick={() => handleLevelImport()}>
+                    {t("settings.import")}
+                </button>
                 <button className="button" onClick={() => closeModalWithAnimation()}>
                     {t("settings.cancel")}
                 </button>
+                {
+                    dataAction &&
+                    <GameData
+                        type={dataAction}
+                        currentLevel={currentLevel}
+                        closeHandler={() => handleDataAction()}
+                        setLevel={setLevel} />
+
+                }
             </div>
         </div>
     )

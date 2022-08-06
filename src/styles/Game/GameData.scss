@@ -1,0 +1,33 @@
+.dataField {
+    height: 15rem;
+    width: 100%;
+
+    background-color: var(--color-secondary);
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+
+    color: var(--color-additional);
+
+    resize: none;
+    text-align: center;
+    overflow: hidden;
+}
+
+.dataTypeSwitch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    background-color: var(--color-secondary);
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+
+    color: var(--color-additional);
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}

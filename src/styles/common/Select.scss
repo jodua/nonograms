@@ -1,0 +1,72 @@
+@import "./colors.scss";
+
+.select {
+    width: 10rem;
+
+    cursor: pointer;
+    user-select: none;
+
+    * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0.5rem;
+
+        border-radius: 5px;
+        border: 0;
+        outline: 0;
+
+        transition: all 0.3s ease-in-out;
+    }
+
+    .selectChosen {
+        margin-bottom: 0;
+
+        background-color: var(--color-secondary);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+
+        font-weight: bold;
+
+        &:hover {
+            background-color: adjust-color($color: $color-secondary, $lightness: 10%);
+            transform: translateY(-1px) scale(1.05);
+        }
+    }
+
+    .selectOptions {
+        z-index: 1;
+        position: absolute;
+        width: 10rem;
+        box-sizing: border-box;
+        opacity: 0;
+
+        background-color: adjust-color($color: $color-secondary, $lightness: 5%);
+
+        .selectOption {
+            width: 90%;
+
+            border-bottom: 2px solid var(--color-primary);
+            background-color: var(--color-secondary);
+
+            &:hover {
+                background-color: adjust-color($color: $color-secondary, $lightness: 10%);
+                transform: translateY(-1px) scale(1.05);
+            }
+        }
+    }
+}
+
+.select>.selectActive>.selectChosen {
+    transform: scale(1);
+}
+
+.select>.selectOptions>.selectOptionActive {
+    background-color: adjust-color($color: $color-secondary, $lightness: 10%);
+}
+
+.select>.visible {
+    opacity: 0.95;
+}

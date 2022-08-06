@@ -167,6 +167,8 @@ const Game = () => {
                 openSettings && <GameSettings
                     settings={settings}
                     setSettings={setSettings}
+                    currentLevel={nonogram}
+                    setLevel={setNonogram}
                     closeHandler={closeSettings} />
             }
         </div>
