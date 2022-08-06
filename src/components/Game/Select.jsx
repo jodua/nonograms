@@ -1,10 +1,14 @@
+import { useTranslation } from "react-i18next"
 import { useState } from "react"
+
 import "../../styles/common/Select.scss"
 
 const Select = ({ state, setState, options }) => {
 
     const [openOptions, setOpenOptions] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
+
+    const { t } = useTranslation()
 
     const handleChange = (option) => {
         setState(option)
@@ -33,7 +37,7 @@ const Select = ({ state, setState, options }) => {
         <div className={"select " + (openOptions ? "selectActive" : "")}>
             <div className="selectChosen"
                 onClick={() => handleOpen()}>
-                {state}
+                {t(state)}
             </div>
             {
                 openOptions && (
@@ -47,9 +51,15 @@ const Select = ({ state, setState, options }) => {
                         {
                             options.map((option) => (
                                 <div key={option}
-                                    className={"selectOption " + (option === state ? "selectOptionActive" : "")}
+                                    className={
+                                        "selectOption " + (
+                                            option === state
+                                                ? "selectOptionActive"
+                                                : ""
+                                        )
+                                    }
                                     onClick={() => handleChange(option)}>
-                                    {option}
+                                    {t(option)}
                                 </div>
                             ))
                         }

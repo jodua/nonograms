@@ -34,7 +34,7 @@ const Game = () => {
         {
             canvasSize: 500,
             cluesSize: 50,
-            fontSize: 20
+            fontSize: 10
         });
 
     const [nonogram, setNonogram] = useState(null);

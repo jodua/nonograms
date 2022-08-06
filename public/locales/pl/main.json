@@ -48,11 +48,38 @@
         "canvasSize": "Rozmiar planszy",
         "cluesSize": "Rozmiar podpowiedzi",
         "fontSize": "Rozmiar czcionki",
-        "saveWarning": "Uwaga: Zapisanie ustawień spowoduje utratę aktualnej gry",
-        "saveAndClose": "Zapisz i zamknij",
-        "cancel": "Anuluj"
+        "saveWarning": "Uwaga: Zapisanie ustawień spowoduje utratę aktualnej gry"
+    },
+    "data": {
+        "import": {
+            "title": {
+                "error": "Błąd podczas importowania danych",
+                "success": "Sukces"
+            },
+            "success": "Dane zostały zaimportowane!",
+            "text": "Wklej tutaj dane do importu",
+            "error": {
+                "notInRange": "Wartość z poza zakresu"
+            },
+            "button": "Zaimportuj"
+        },
+        "export": {
+            "text": "W celu podzielenia się z innymi, skopiuj kod poniżej",
+            "button": "Eksportuj"
+        },
+        "type": {
+            "raw": "Raw",
+            "json": "JSON",
+            "csv": "CSV"
+        }
     },
     "buttons": {
-        "homepage": "Powrót do strony głównej"
+        "homepage": "Strona główna",
+        "close": "Zamknij",
+        "cancel": "Anuluj",
+        "copy": "Kopiuj",
+        "import": "Zaimportuj poziom",
+        "export": "Wyeksportuj poziom",
+        "saveAndClose": "Zapiksuj i zamknij"
     }
 }

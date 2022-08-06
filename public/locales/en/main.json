@@ -48,11 +48,38 @@
         "canvasSize": "Canvas size",
         "cluesSize": "Clues size",
         "fontSize": "Font size",
-        "saveWarning": "Warning: if you change the settings, you will lose the current game!",
-        "saveAndClose": "Save and close",
-        "cancel": "Cancel"
+        "saveWarning": "Warning: if you change the settings, you will lose the current game!"
+    },
+    "data": {
+        "import": {
+            "title": {
+                "error": "Importing error",
+                "success": "Success"
+            },
+            "success": "The data has been imported successfully!",
+            "text": "Paste the code below to import a level",
+            "error": {
+                "notInRange": "The level is not in the range of levels"
+            },
+            "button": "Import level"
+        },
+        "export": {
+            "text": "Copy the code below and share it with others to play this level",
+            "button": "Export level"
+        },
+        "type": {
+            "raw": "Raw data",
+            "json": "JSON data",
+            "csv": "CSV data"
+        }
     },
     "buttons": {
-        "homepage": "Back to homepage"
+        "homepage": "Back to homepage",
+        "close": "Close",
+        "cancel": "Cancel",
+        "copy": "Copy",
+        "import": "Import level",
+        "export": "Export level",
+        "saveAndClose": "Save and close"
     }
 }

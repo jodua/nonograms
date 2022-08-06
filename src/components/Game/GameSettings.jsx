@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import GameData from "./GameData";
+
 import "../../styles/Modal/Modal.scss"
 import "../../styles/Game/GameSettings.scss"
 import "../../styles/common/Button.scss"
 import "../../styles/common/Structure.scss"
-import GameData from "./GameData";
 
 const GameSettings = ({ settings, setSettings, closeHandler, currentLevel, setLevel }) => {
 
@@ -104,16 +105,16 @@ const GameSettings = ({ settings, setSettings, closeHandler, currentLevel, setLe
                 </div>
                 <div className="subtitle">{t("settings.saveWarning")}</div>
                 <button className="button button--red" onClick={() => handleSaveAndClose()}>
-                    {t("settings.saveAndClose")}
+                    {t("buttons.saveAndClose")}
                 </button>
                 <button className="button" onClick={() => handleLevelExport()}>
-                    {t("settings.export")}
+                    {t("buttons.export")}
                 </button>
                 <button className="button" onClick={() => handleLevelImport()}>
-                    {t("settings.import")}
+                    {t("buttons.import")}
                 </button>
                 <button className="button" onClick={() => closeModalWithAnimation()}>
-                    {t("settings.cancel")}
+                    {t("buttons.cancel")}
                 </button>
                 {
                     dataAction &&
