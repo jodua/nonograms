@@ -10,6 +10,15 @@ import App from './App';
 import "./styles/index.scss";
 
 const language = languages.find(value => value === localStorage.getItem('language'));
+const defaultGameConfig = {
+  canvasSize: 500,
+  cluesSize: 100,
+  fontSize: 16,
+}
+
+if (localStorage.getItem('settings') === null) {
+  localStorage.setItem('settings', JSON.stringify(defaultGameConfig));
+}
 
 i18next.use(Backend)
   .use(initReactI18next)

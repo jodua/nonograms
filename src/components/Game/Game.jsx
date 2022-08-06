@@ -28,7 +28,9 @@ const Game = () => {
     const [modalButtonMsg, setModalButtonMsg] = useState("");
 
     const [openSettings, setOpenSettings] = useState(false);
-    const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings")));
+    const [settings, setSettings] = useState(
+        JSON.parse(localStorage.getItem("settings"))
+    );
 
     const [nonogram, setNonogram] = useState(null);
 
