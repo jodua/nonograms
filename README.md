@@ -5,7 +5,7 @@
 
 Project is developed in [React](https://reactjs.org/).
 
-You can find live version of the game [here](https://jodua.pl:3001).
+You can find live version of the game [here](https://nonograms.jodua.pl).
 
 ## Installation
 
