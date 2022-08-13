@@ -41,13 +41,21 @@ class Game {
         let textMeasurement = this.ctx.measureText("00");
         this.actualFontWidth = textMeasurement.actualBoundingBoxRight - textMeasurement.actualBoundingBoxLeft;
         this.actualFontHeight = textMeasurement.actualBoundingBoxAscent - textMeasurement.actualBoundingBoxDescent;
+        console.log(isTouchDevice())
 
-
-        this.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
-        this.canvas.addEventListener("mouseup", this.handleMouseUp.bind(this));
-        this.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
-        this.canvas.addEventListener("mouseleave", this.handleMouseLeave.bind(this));
-
+        if (isTouchDevice()) {
+            // Mobile touch events
+            this.canvas.addEventListener("touchstart", this.handleTouchStart.bind(this));
+            this.canvas.addEventListener("touchend", this.handleTouchEnd.bind(this));
+            this.canvas.addEventListener("touchmove", this.handleTouchMove.bind(this));
+        }
+        else {
+            // Mouse events
+            this.canvas.addEventListener("mousedown", this.handleMouseDown.bind(this));
+            this.canvas.addEventListener("mouseup", this.handleMouseUp.bind(this));
+            this.canvas.addEventListener("mousemove", this.handleMouseMove.bind(this));
+            this.canvas.addEventListener("mouseleave", this.handleMouseLeave.bind(this));
+        }
     }
 
     updateSettings(settings) {
@@ -429,6 +437,48 @@ class Game {
         this.drawn = [];
         this.fillType = null;
     }
+
+    getTouchscreenEventObject(event) {
+        // Get event object for touchscreen devices
+        // If event is a touch event
+        const eventObject = {
+            offsetX: event.touches[0].clientX - this.canvas.offsetLeft,
+            offsetY: event.touches[0].clientY - this.canvas.offsetTop
+        }
+        return eventObject;
+    }
+
+    handleTouchStart(event) {
+        // Create event object with offsetX and offsetY
+        const eventObject = {
+            button: 0
+        }
+        // Call handleMouseDown with event object
+        this.handleMouseDown(eventObject);
+    }
+
+    handleTouchMove(event) {
+        // Create event object with offsetX and offsetY
+        const eventObject = this.getTouchscreenEventObject(event);
+        // Call handleMouseMove with event object
+        this.handleMouseMove(eventObject);
+    }
+
+    handleTouchEnd(event) {
+        // Create event object with offsetX and offsetY
+        const eventObject = {
+            offsetX: event.changedTouches[0].clientX - this.canvas.offsetLeft,
+            offsetY: event.changedTouches[0].clientY - this.canvas.offsetTop
+        }
+        // Call handleMouseUp with event object
+        this.handleMouseUp(eventObject);
+    }
+}
+
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
 }
 
 export default Game;
