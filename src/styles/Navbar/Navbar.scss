@@ -60,3 +60,17 @@
     }
 
 }
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        .navbarSection:first-child {
+            display: none;
+        }
+
+        .navbarSection {
+            width: 100%;
+            justify-content: space-around;
+        }
+
+    }
+}

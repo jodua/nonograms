@@ -31,7 +31,6 @@ class Game {
     }
 
     setSettings(settings) {
-        console.log("setSettings", settings);
         this.width = this.canvas.width;
         this.height = this.canvas.height;
 

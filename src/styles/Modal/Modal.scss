@@ -19,7 +19,6 @@
         justify-content: center;
         align-items: center;
 
-        min-width: 400px;
         padding: 20px;
         z-index: 2;
 
@@ -38,4 +37,10 @@
 .modalClosing {
     opacity: 0;
     pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+    .modalContainer {
+        width: 80%;
+    }
 }

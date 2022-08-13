@@ -16,8 +16,19 @@ const defaultGameConfig = {
   fontSize: 16,
 }
 
+const defaultMobileGameConfig = {
+  canvasSize: 320,
+  cluesSize: 40,
+  fontSize: 12,
+}
+
 if (localStorage.getItem('settings') === null) {
-  localStorage.setItem('settings', JSON.stringify(defaultGameConfig));
+  if (window.innerWidth < 768) {
+    localStorage.setItem('settings', JSON.stringify(defaultMobileGameConfig));
+  }
+  else {
+    localStorage.setItem('settings', JSON.stringify(defaultGameConfig));
+  }
 }
 
 i18next.use(Backend)
