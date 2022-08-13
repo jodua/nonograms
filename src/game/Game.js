@@ -41,7 +41,6 @@ class Game {
         let textMeasurement = this.ctx.measureText("00");
         this.actualFontWidth = textMeasurement.actualBoundingBoxRight - textMeasurement.actualBoundingBoxLeft;
         this.actualFontHeight = textMeasurement.actualBoundingBoxAscent - textMeasurement.actualBoundingBoxDescent;
-        console.log(isTouchDevice())
 
         if (isTouchDevice()) {
             // Mobile touch events
